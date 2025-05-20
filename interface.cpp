@@ -10,7 +10,7 @@ void Menu(Function* array[], int size)
 
 	while(state)
 	{
-		cout << "0- Exit from menu." << endl;
+		cout << endl << "0- Exit from menu." << endl;
 		cout << "1- Visualize function list." << endl;
 		cout << "2- Insert function." << endl;
 		cout << "3- Delete a function." << endl;
