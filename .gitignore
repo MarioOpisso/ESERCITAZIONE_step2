@@ -1,0 +1,4 @@
+*.exe
+*_td.c
+[Hh]tml/
+[Ll]atex/
