@@ -9,8 +9,14 @@
 void Menu(Function* array[], int size);
 void Visualize(Function* array[], int size);
 void Insert(Function* array[], int size);
-//bool Delete(Functon * array, int& size, int choice);
+void Delete(Function * array[], int size);
 void DeleteALL(Function* array[], int size);
-//void Selection(Functon * array, int& size, int choice);
+void Selection(Function * array[], int size);
 
+int GetID(Function * array[], int size);
+int Control(int a, int b);
+bool isEmpty(Function * array[], int size);
+int LookForNull(Function * array[], int size);
+void ErrorMessage(const char *string);
+bool Check(Function* temp);
 #endif

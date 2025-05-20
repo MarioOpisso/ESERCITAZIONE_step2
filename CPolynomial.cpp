@@ -30,6 +30,7 @@ Polynomial::~Polynomial() {
 		delete coeff;
 		coeff = NULL;
 	}
+	cout << "POLYNOMIAL -- destructor";
 }
 
 /// @brief copy constructor
@@ -195,9 +196,10 @@ void Polynomial::WarningMessage(const char *string) {
 
 /// @brief gives the status of the object 
 void Polynomial::Dump() {
-
 	int i;
 	
+	cout << endl;
+	cout << "---Polynomial---" << endl;
 	if (degree == -1) {
 		cout << "Uninitialized polynomial" << endl;
 		return;
