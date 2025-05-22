@@ -1,5 +1,13 @@
+/*! @file interface.cpp
+	@brief This is a program to manage an array of Function (polynomial, power and logarithmic).
+	@author Opisso Mario
+*/
+
 #include "interface.h"
 
+/// @brief menu interface
+/// @param address of first array cell
+/// @param array size
 void Menu(Function* array[], int size)
 {
 	cout << endl;
@@ -44,7 +52,9 @@ void Menu(Function* array[], int size)
 	}
 }
 
-
+/// @brief function list printer
+/// @param address of first array cell
+/// @param array size
 void Visualize(Function* array[], int size)
 {
 	if(isEmpty(array, size))
@@ -63,6 +73,9 @@ void Visualize(Function* array[], int size)
 	return;
 }
 
+/// @brief function adder
+/// @param address of first array cell
+/// @param array size
 void Insert(Function* array[], int size)
 {
 	double coeffA;
@@ -146,7 +159,9 @@ void Insert(Function* array[], int size)
 	}
 }
 
-
+/// @brief function deleter
+/// @param address of first array cell
+/// @param array size
 void Delete(Function * array[], int size)
 {
 	if(isEmpty(array, size))
@@ -165,19 +180,23 @@ void Delete(Function * array[], int size)
 	Delete(array, size);
 }
 
-
+/// @brief list destructor
+/// @param address of first array cell
+/// @param array size
 void DeleteALL(Function* array[], int size)
- {
-	 for(int i = 0; i < size; i++)
-	 {
-		 delete array[i];
-		 array[i] = NULL;
-	 }
- }
+{
+	for(int i = 0; i < size; i++)
+	{
+		delete array[i];
+		array[i] = NULL;
+	}
+}
  
- 
- void Selection(Function * array[], int size)
- {
+/// @brief function selector
+/// @param address of first array cell
+/// @param array size
+void Selection(Function * array[], int size)
+{
 	double x;
 	
 	if(isEmpty(array, size))
@@ -191,12 +210,20 @@ void DeleteALL(Function* array[], int size)
 	cout << endl << "Insert the value of x: " << endl;
 	cin >> x;
 	cout << endl << "F(" << x << ") = " << array[ID]->GetValue(x);
- }
+}
  
-
- int GetID(Function * array[], int size)
- {
+/// @brief ID input
+/// @param address of first array cell
+/// @param array size
+/// @return address of the selected cell
+int GetID(Function * array[], int size)
+{
 	int ID;
+	cout << endl << "Insert 1 to visualize the functions list or 0 to continue: " << endl;
+	if(Control(0,1))
+	{
+		Visualize(array, size);
+	}
 	cout << endl << "Insert the ID of the function: " << endl;
 	cin >> ID;
 	
@@ -206,11 +233,14 @@ void DeleteALL(Function* array[], int size)
 		cin >> ID;
 	}
 	return ID;
- }
+}
  
- 
- int Control(int a, int b)
- {
+/// @brief input check
+/// @param inferior limit
+/// @param superior limit
+/// @return option selected
+int Control(int a, int b)
+{
 	int val;
 	cin >> val;
 	while(val < a || val > b)
@@ -219,10 +249,14 @@ void DeleteALL(Function* array[], int size)
 		cin >> val;
 	}
 	return val;
- }
- 
- bool isEmpty(Function * array[], int size)
- {
+}
+
+/// @brief function available control
+/// @param address of first array cell
+/// @param array 
+/// @return 1 if the list is empty
+bool isEmpty(Function * array[], int size)
+{
 	for(int i = 0; i < size; i++)
 	{
 		if(array[i] != NULL)
@@ -232,9 +266,13 @@ void DeleteALL(Function* array[], int size)
 	}
 	ErrorMessage("No function available!");
 	return 1;
- }
+}
  
-LookForNull(Function * array[], int size)
+/// @brief searching for null cell
+/// @param address of first array cell
+/// @param array size
+/// @return address of the first null cell
+int LookForNull(Function * array[], int size)
 {
 	for(int i = 0; i < size; i++)
 	{
@@ -247,11 +285,16 @@ LookForNull(Function * array[], int size)
 	return -1;
 }
 
+/// @brief error message printer
+/// @param text
 void ErrorMessage(const char *string)
 {
 	cout << endl << "***ERROR*** -- " << string << endl;
 }
 
+/// @brief function confirmer
+/// @param address array cell
+/// @return 1 if the function is confirmed
 bool Check(Function* temp)
 {
 	cout << endl << "Check of the new function: "<< endl;
